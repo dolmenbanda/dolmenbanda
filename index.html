@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOLMEN | Umbral - Rock / Stoner Rock</title>
+    <meta name="description" content="Dolmen - Power trío de Rock / Stoner Rock de Buenos Aires, Argentina. Escuchá nuestro álbum debut 'Umbral'.">
+    
+    <!-- Favicon desde Bandcamp -->
+    <link rel="shortcut icon" href="https://f4.bcbits.com/img/a1940312555_3.jpg">
+
+    <!-- Google Fonts: Tipografía pesada y estética 70s/Stoner -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-main: #262828;
+            --bg-card: #343636;
+            --bg-elevated: #424444;
+            --accent-purple: #A239F9;
+            --accent-purple-glow: rgba(162, 57, 249, 0.35);
+            --text-primary: #EAEAEA;
+            --text-secondary: #9D9E9E;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 0%, #3a2b47 0%, var(--bg-main) 65%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 960px;
+            padding: 2rem 1.25rem 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .band-banner {
+            max-width: 100%;
+            height: auto;
+            max-height: 160px;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.6));
+            transition: transform 0.3s ease;
+        }
+
+        .band-banner:hover {
+            transform: scale(1.02);
+        }
+
+        .subtitle {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.85rem;
+            width: 100%;
+            max-width: 680px;
+            margin-bottom: 2.75rem;
+        }
+
+        @media (min-width: 640px) {
+            .social-links {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .btn-platform {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 0.85rem 1rem;
+            background-color: var(--bg-card);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.04em;
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-platform svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            transition: transform 0.25s ease;
+        }
+
+        .btn-platform:hover {
+            background-color: var(--accent-purple);
+            color: #ffffff;
+            border-color: var(--accent-purple);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px var(--accent-purple-glow);
+        }
+
+        .btn-platform:hover svg {
+            transform: scale(1.12);
+        }
+
+        .album-showcase {
+            width: 100%;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 1.75rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+            margin-bottom: 2.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .album-showcase {
+                grid-template-columns: 320px 1fr;
+                padding: 2.25rem;
+                align-items: start;
+            }
+        }
+
+        .album-cover-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 340px;
+            margin: 0 auto;
+        }
+
+        .album-cover {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid rgba(162, 57, 249, 0.4);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            display: block;
+        }
+
+        .release-badge {
+            display: inline-block;
+            background-color: rgba(162, 57, 249, 0.15);
+            color: var(--accent-purple);
+            border: 1px solid var(--accent-purple);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            padding: 0.25rem 0.65rem;
+            border-radius: 4px;
+            margin-bottom: 0.6rem;
+        }
+
+        .album-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            line-height: 1.1;
+            margin-bottom: 0.35rem;
+            color: #ffffff;
+        }
+
+        .album-meta {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+        }
+
+        .player-container {
+            width: 100%;
+            margin-bottom: 1.5rem;
+            border-radius: 6px;
+            overflow: hidden;
+            background: #2b2d2d;
+        }
+
+        .bandcamp-embed {
+            border: 0;
+            width: 100%;
+            height: 340px;
+            display: block;
+        }
+
+        .album-credits {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 1rem;
+        }
+
+        .album-credits p {
+            margin-bottom: 0.4rem;
+        }
+
+        .band-bio {
+            width: 100%;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        @media (min-width: 768px) {
+            .band-bio {
+                grid-template-columns: 1.1fr 1fr;
+            }
+        }
+
+        .band-photo {
+            width: 100%;
+            height: 100%;
+            min-height: 240px;
+            max-height: 340px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .bio-content {
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .bio-content h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.75rem;
+            color: #ffffff;
+        }
+
+        .bio-content p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+        }
+
+        .lineup {
+            list-style: none;
+            font-size: 0.9rem;
+        }
+
+        .lineup li {
+            padding: 0.35rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .lineup li:last-child {
+            border-bottom: none;
+        }
+
+        .lineup span.role {
+            color: var(--accent-purple);
+            font-weight: 500;
+        }
+
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        footer a {
+            color: var(--accent-purple);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <img src="https://f4.bcbits.com/img/0048290471_100.png" alt="Dolmen Logo" class="band-banner">
+            <p class="subtitle" data-i18n="subtitle">Stoner • Rock • Buenos Aires • Argentina</p>
+        </header>
+
+        <!-- PLATAFORMAS CON ENLACES REALES -->
+        <nav class="social-links" aria-label="Plataformas y Redes">
+            <a href="https://open.spotify.com/artist/37AVf11vS9OtcNVem0oViO" target="_blank" rel="noopener noreferrer" class="btn-platform">
+                <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                Spotify
+            </a>
+
+            <a href="https://youtube.com/playlist?list=OLAK5uy_n2zfCvdeNoYhr3t1sXZv1eAqdQnTo70FE&si=i2HIIGv6UvUwcWix" target="_blank" rel="noopener noreferrer" class="btn-platform">
+                <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                YouTube
+            </a>
+
+            <a href="https://dolmenbanda.bandcamp.com/" target="_blank" rel="noopener noreferrer" class="btn-platform">
+                <svg viewBox="0 0 24 24"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/></svg>
+                Bandcamp
+            </a>
+
+            <a href="https://www.instagram.com/dolmen.banda/" target="_blank" rel="noopener noreferrer" class="btn-platform">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                Instagram
+            </a>
+        </nav>
+
+        <!-- ÁLBUM UMBRAL -->
+        <main class="album-showcase">
+            <div class="album-cover-wrapper">
+                <img src="https://f4.bcbits.com/img/a1940312555_10.jpg" alt="Portada del álbum Umbral de Dolmen" class="album-cover">
+            </div>
+
+            <div class="album-details">
+                <span class="release-badge" data-i18n="badge">Álbum Debut • 2026</span>
+                <h1 class="album-title">UMBRAL</h1>
+                <p class="album-meta" data-i18n="meta">7 tracks • Grabado en Estudio Cruz del Sur</p>
+
+                <div class="player-container">
+                    <iframe 
+                        class="bandcamp-embed"
+                        src="https://bandcamp.com/EmbeddedPlayer/album=610759958/size=large/bgcol=333333/linkcol=A239F9/artwork=none/transparent=true/" 
+                        seamless
+                        title="Reproductor de Umbral por Dolmen">
+                        <a href="https://dolmenbanda.bandcamp.com/album/umbral">Umbral by Dolmen</a>
+                    </iframe>
+                </div>
+
+                <div class="album-credits">
+                    <p data-i18n="credits_rec">Grabado en estudio durante 2 jornadas (24 y 25 de Mayo de 2025) en <strong>Estudio Cruz del Sur</strong> por Mauro Valentini.</p>
+                    <p data-i18n="credits_prod">Producido, mezclado y masterizado por <strong>Nahuel Oliveto y Dolmen</strong>. Arte de tapa: Luke Ghedin.</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- SECCIÓN BIO -->
+        <section class="band-bio" aria-label="Sobre Dolmen">
+            <img src="https://f4.bcbits.com/img/0048290373_10.jpg" alt="Dolmen en estudio" class="band-photo">
+            <div class="bio-content">
+                <h2 data-i18n="bio_title">LA BANDA</h2>
+                <p data-i18n="bio_text">Power trío de rock y stoner rock formado en Buenos Aires, Argentina.</p>
+                <ul class="lineup">
+                    <li>
+                        <span>Pablo "Tano" Olivetto</span>
+                        <span class="role" data-i18n="role1">Guitarra y Voz</span>
+                    </li>
+                    <li>
+                        <span>Luke Ghedín</span>
+                        <span class="role" data-i18n="role2">Bajo y Voz</span>
+                    </li>
+                    <li>
+                        <span>Eric Rizzo</span>
+                        <span class="role" data-i18n="role3">Batería y Percusión</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p data-i18n="footer_copy">© 2026 DOLMEN — Buenos Aires, Argentina. Todos los derechos reservados.</p>
+            <p style="margin-top: 0.35rem;"><span data-i18n="footer_contact">Contacto y fechas:</span> <a href="https://www.instagram.com/dolmen.banda/" target="_blank" rel="noopener noreferrer">@dolmen.banda</a></p>
+        </footer>
+    </div>
+
+    <!-- SCRIPT DE TRADUCCIÓN AUTOMÁTICA (8 IDIOMAS) -->
+    <script>
+        const translations = {
+            es: {
+                subtitle: "Stoner • Rock • Buenos Aires • Argentina",
+                badge: "Álbum Debut • 2026",
+                meta: "7 tracks • Grabado en Estudio Cruz del Sur",
+                credits_rec: "Grabado en estudio durante 2 jornadas (24 y 25 de Mayo de 2025) en <strong>Estudio Cruz del Sur</strong> por Mauro Valentini.",
+                credits_prod: "Producido, mezclado y masterizado por <strong>Nahuel Oliveto y Dolmen</strong>. Arte de tapa: Luke Ghedin.",
+                bio_title: "LA BANDA",
+                bio_text: "Power trío de rock y stoner rock formado en Buenos Aires, Argentina.",
+                role1: "Guitarra y Voz",
+                role2: "Bajo y Voz",
+                role3: "Batería y Percusión",
+                footer_copy: "© 2026 DOLMEN — Buenos Aires, Argentina. Todos los derechos reservados.",
+                footer_contact: "Contacto y fechas:"
+            },
+            en: {
+                subtitle: "Stoner • Rock • Buenos Aires • Argentina",
+                badge: "Debut Album • 2026",
+                meta: "7 tracks • Recorded at Estudio Cruz del Sur",
+                credits_rec: "Recorded in studio over 2 sessions (May 24-25, 2025) at <strong>Estudio Cruz del Sur</strong> by Mauro Valentini.",
+                credits_prod: "Produced, mixed, and mastered by <strong>Nahuel Oliveto and Dolmen</strong>. Cover art: Luke Ghedin.",
+                bio_title: "THE BAND",
+                bio_text: "Rock and stoner rock power trio formed in Buenos Aires, Argentina.",
+                role1: "Guitar & Vocals",
+                role2: "Bass & Vocals",
+                role3: "Drums & Percussion",
+                footer_copy: "© 2026 DOLMEN — Buenos Aires, Argentina. All rights reserved.",
+                footer_contact: "Contact & shows:"
+            },
+            pt: {
+                subtitle: "Stoner • Rock • Buenos Aires • Argentina",
+                badge: "Álbum de Estreia • 2026",
+                meta: "7 faixas • Gravado no Estudio Cruz del Sur",
+                credits_rec: "Gravado em estúdio em 2 sessões (24 e 25 de maio de 2025) no <strong>Estudio Cruz del Sur</strong> por Mauro Valentini.",
+                credits_prod: "Produzido, mixado e masterizado por <strong>Nahuel Oliveto e Dolmen</strong>. Arte da capa: Luke Ghedin.",
+                bio_title: "A BANDA",
+                bio_text: "Power trio de rock e stoner rock formado em Buenos Aires, Argentina.",
+                role1: "Guitarra e Voz",
+                role2: "Baixo e Voz",
+                role3: "Bateria e Percussão",
+                footer_copy: "© 2026 DOLMEN — Buenos Aires, Argentina. Todos os direitos reservados.",
+                footer_contact: "Contato e agenda:"
+            },
+            de: {
+                subtitle: "Stoner • Rock • Buenos Aires • Argentina",
+                badge: "Debütalbum • 2026",
+                meta: "7 Tracks • Aufgenommen im Estudio Cruz del Sur",
+                credits_rec: "Im Studio aufgenommen in 2 Sessions (24.–25. Mai 2025) im <strong>Estudio Cruz del Sur</strong> von Mauro Valentini.",
+                credits_prod: "Produziert, gemischt und gemastert von <strong>Nahuel Oliveto und Dolmen</strong>. Cover-Artwork: Luke Ghedin.",
+                bio_title: "DIE BAND",
+                bio_text: "Rock- und Stoner-Rock-Power-Trio aus Buenos Aires, Argentinien.",
+                role1: "Gitarre & Gesang",
+                role2: "Bass & Gesang",
+                role3: "Schlagzeug & Perkussion",
+                footer_copy: "© 2026 DOLMEN — Buenos Aires, Argentinien. Alle Rechte vorbehalten.",
+                footer_contact: "Kontakt & Shows:"
+            },
+            fr: {
+                subtitle: "Stoner • Rock • Buenos Aires • Argentina",
+                badge: "Album Début • 2026",
+                meta: "7 pistes • Enregistré au Estudio Cruz del Sur",
+                credits_rec: "Enregistré en studio en 2 sessions (24-25 mai 2025) au <strong>Estudio Cruz del Sur</strong> par Mauro Valentini.",
+                credits_prod: "Produit, mixé et masterisé par <strong>Nahuel Oliveto et Dolmen</strong>. Pochette : Luke Ghedin.",
+                bio_title: "LE GROUPE",
+                bio_text: "Power trio rock et stoner rock formé à Buenos Aires, en Argentine.",
+                role1: "Guitare & Chant",
+                role2: "Basse & Chant",
+                role3: "Batterie & Percussion",
+                footer_copy: "© 2026 DOLMEN — Buenos Aires, Argentine. Tous droits réservés.",
+                footer_contact: "Contact & dates :"
+            },
+            it: {
+                subtitle: "Stoner • Rock • Buenos Aires • Argentina",
+                badge: "Album d'Esordio • 2026",
+                meta: "7 tracce • Registrato allo Estudio Cruz del Sur",
+                credits_rec: "Registrato in studio in 2 sessioni (24-25 maggio 2025) presso lo <strong>Estudio Cruz del Sur</strong> da Mauro Valentini.",
+                credits_prod: "Prodotto, mixato e masterizzato da <strong>Nahuel Oliveto e Dolmen</strong>. Copertina: Luke Ghedin.",
+                bio_title: "LA BAND",
+                bio_text: "Power trio rock e stoner rock fondato a Buenos Aires, Argentina.",
+                role1: "Chitarra e Voce",
+                role2: "Basso e Voce",
+                role3: "Batteria e Percussioni",
+                footer_copy: "© 2026 DOLMEN — Buenos Aires, Argentina. Tutti i diritti riservati.",
+                footer_contact: "Contatti e concerti:"
+            },
+            zh: {
+                subtitle: "Rock • Stoner Rock • 布宜诺斯艾利斯 • 阿根廷",
+                badge: "首张专辑 • 2026",
+                meta: "7首歌 • 录制于 Estudio Cruz del Sur",
+                credits_rec: "于 2025 年 5 月 24 日至 25 日在 <strong>Estudio Cruz del Sur</strong> 经由 Mauro Valentini 录音室录制。",
+                credits_prod: "由 <strong>Nahuel Oliveto 与 Dolmen</strong> 共同制作、混音与母带处理。封面艺术：Luke Ghedin。",
+                bio_title: "乐队简介",
+                bio_text: "来自阿根廷布宜诺斯艾利斯的 rock 与 stoner rock 力量三人组。",
+                role1: "吉他与主唱",
+                role2: "贝斯与主唱",
+                role3: "架子鼓与打击乐",
+                footer_copy: "© 2026 DOLMEN — 阿根廷布宜诺斯艾利斯。保留所有权利。",
+                footer_contact: "联系与演出："
+            },
+            ja: {
+                subtitle: "Rock • Stoner Rock • ブエノスアイレス • アルゼンチン",
+                badge: "デビュー・アルバム • 2026",
+                meta: "全7曲 • Estudio Cruz del Surにて録音",
+                credits_rec: "2025年5月24日〜25日の2日間にわたり、<strong>Estudio Cruz del Sur</strong>にてマウロ・ヴァレンティーニによってスタジオ録音。",
+                credits_prod: "プロデュース・ミックス・マスタリング：<strong>ナウエル・オリヴェット＆ドルメン</strong>。カバーアート：ルーク・ゲディン。",
+                bio_title: "バンドについて",
+                bio_text: "アルゼンチンのブエノスアイレスで結成されたロック、ストーナーロックのパワー・トリオ。",
+                role1: "ギター＆ボーカル",
+                role2: "ベース＆ボーカル",
+                role3: "ドラムス・パーカッション",
+                footer_copy: "© 2026 DOLMEN — ブエノスアイレス、アルゼンチン。全著作権所有。",
+                footer_contact: "コンタクト・ライブ情報："
+            }
+        };
+
+        const rawLang = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+        let langKey = rawLang.substring(0, 2);
+
+        if (rawLang.includes('zh')) {
+            langKey = 'zh';
+        }
+
+        const currentLang = translations[langKey] ? langKey : 'en';
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const elements = document.querySelectorAll("[data-i18n]");
+            elements.forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                if (translations[currentLang] && translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+            document.documentElement.setAttribute('lang', currentLang);
+        });
+    </script>
+</body>
+</html>
